@@ -3857,8 +3857,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareY,
 		C3.Behaviors.DragnDrop.Cnds.OnDrop,
-		C3.Plugins.Sprite.Exps.Angle,
-		C3.Plugins.Sprite.Acts.SetAngle,
+		C3.Plugins.Sprite.Acts.RotateClockwise,
 		C3.Plugins.DrawingCanvas.Acts.SetPos,
 		C3.Plugins.System.Acts.SnapshotCanvas,
 		C3.Plugins.Browser.Acts.InvokeDownload,
@@ -3926,6 +3925,7 @@ self.C3_JsPropNameTable = [
 	{selecting_clipart: 0},
 	{offX: 0},
 	{offY: 0},
+	{ang: 0},
 	{i: 0},
 	{oldX: 0},
 	{oldY: 0},
@@ -4147,14 +4147,19 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "Rotate",
 		p => {
-			const v0 = p._GetNode(0).GetVar();
+			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
-			return () => (v0.GetValue() - (n1.ExpInstVar() / 4));
+			const n2 = p._GetNode(2);
+			const n3 = p._GetNode(3);
+			const v4 = p._GetNode(4).GetVar();
+			return () => (C3.toDegrees(C3.angleTo(n0.ExpObject(), n1.ExpObject(), n2.ExpObject(), n3.ExpObject())) - v4.GetValue());
 		},
 		p => {
-			const v0 = p._GetNode(0).GetVar();
+			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
-			return () => (v0.GetValue() + (n1.ExpInstVar() / 4));
+			const n2 = p._GetNode(2);
+			const n3 = p._GetNode(3);
+			return () => C3.toDegrees(C3.angleTo(n0.ExpObject(), n1.ExpObject(), n2.ExpObject(), n3.ExpObject()));
 		},
 		() => "Snapshot",
 		() => "SHAPE",
