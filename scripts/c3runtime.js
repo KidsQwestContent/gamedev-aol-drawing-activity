@@ -3783,16 +3783,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.DragnDrop,
 		C3.Plugins.TiledBg,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
-		C3.Plugins.Browser.Cnds.IsFullscreen,
-		C3.Plugins.Browser.Acts.RequestFullScreen,
-		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.Browser.Acts.CancelFullScreen,
-		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.System.Acts.SetLayerScale,
+		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.TiledBg.Acts.SetDefaultColor,
 		C3.Plugins.System.Exps.rgba,
 		C3.Plugins.DrawingCanvas.Acts.PasteObject,
@@ -3809,6 +3805,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.System.Cnds.Else,
 		C3.Behaviors.Pin.Acts.Unpin,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Sprite.Exps.UID,
@@ -3870,7 +3867,6 @@ self.C3_GetObjectRefTable = function () {
 self.C3_JsPropNameTable = [
 	{panel_global: 0},
 	{title: 0},
-	{button_fullscreen: 0},
 	{Browser: 0},
 	{Touch: 0},
 	{Mouse: 0},
@@ -4030,12 +4026,12 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
-		() => 1,
-		() => 0,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
+		() => 0,
+		() => 1,
 		() => "idle",
 		() => "DRAW",
 		p => {
