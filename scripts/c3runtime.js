@@ -4111,14 +4111,16 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("CANVAS");
+			const v1 = p._GetNode(1).GetVar();
+			return () => (f0("CANVAS") - v1.GetValue());
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const v2 = p._GetNode(2).GetVar();
-			const f3 = p._GetNode(3).GetBoundMethod();
-			return () => C3.lerp(v0.GetValue(), f1("CANVAS"), ((1 / v2.GetValue()) * f3()));
+			const v3 = p._GetNode(3).GetVar();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			return () => C3.lerp(v0.GetValue(), (f1("CANVAS") - v2.GetValue()), ((1 / v3.GetValue()) * f4()));
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4131,19 +4133,6 @@ self.C3_ExpressionFuncs = [
 		() => "Eraser",
 		() => "erase",
 		() => "Erase",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => (f0("CANVAS") - v1.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const v2 = p._GetNode(2).GetVar();
-			const v3 = p._GetNode(3).GetVar();
-			const f4 = p._GetNode(4).GetBoundMethod();
-			return () => C3.lerp(v0.GetValue(), (f1("CANVAS") - v2.GetValue()), ((1 / v3.GetValue()) * f4()));
-		},
 		() => 12.5,
 		() => "Color",
 		() => "color",
